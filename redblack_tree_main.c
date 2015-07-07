@@ -32,7 +32,7 @@ int main(){
     nill->key   = 0;
     root        = nill;
     while(ch != '0'){
-        SetConsoleTextAttribute(hConsole, 15);
+        SetConsoleTextAttribute(hConsole, 7);
         printf("(1)Insert Nodes  (2)In-order Print (3)Tree Print (4)Delete Node (0)Quit :\n");fflush(stdout);
         ch = getchar();
         if(ch == '1'){
@@ -355,13 +355,12 @@ void io_print(struct node *aux, struct node *auxnill){
         if (aux->color == red){
             SetConsoleTextAttribute(hConsole, 12);
             printf("%d,", aux->key); fflush(stdout);
-            SetConsoleTextAttribute(hConsole, 15);
         }
         if (aux->color == black){
-            SetConsoleTextAttribute(hConsole, 9);
+            SetConsoleTextAttribute(hConsole, 8);
             printf("%d,", aux->key); fflush(stdout);
-            SetConsoleTextAttribute(hConsole, 15);
         }
+        SetConsoleTextAttribute(hConsole, 7);
         io_print(aux->RC, auxnill);
     }
 }
@@ -373,52 +372,46 @@ void tree_print(struct node *aux, struct node *nill){
     if(aux != nill){
         if(aux->RC != nill) {
             if (aux->color == black) {
-                SetConsoleTextAttribute(hConsole, 9);
-                printf("%d", aux->key);  fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
-                printf("->RC:");    fflush(stdout);
+                SetConsoleTextAttribute(hConsole, 8);
+                printf("%d", aux->key); fflush(stdout);
+                printf("->RC:");    	fflush(stdout);
             }
             else if (aux->color == red){
                 SetConsoleTextAttribute(hConsole, 12);
-                printf("%d", aux->key);  fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
-                printf("->RC:");    fflush(stdout);
+                printf("%d", aux->key); fflush(stdout);
+                printf("->RC:");    	fflush(stdout);
             }
             if (aux->RC->color == black){
-                SetConsoleTextAttribute(hConsole, 9);
+                SetConsoleTextAttribute(hConsole, 8);
                 printf("%d\n", aux->RC->key);    fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
             }
             else if (aux->RC->color == red){
                 SetConsoleTextAttribute(hConsole, 12);
                 printf("%d\n", aux->RC->key);    fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
             }
+            SetConsoleTextAttribute(hConsole, 7);
             tree_print(aux->RC, nill);
         }
         if(aux->LC != nill){
             if (aux->color == black){
-                SetConsoleTextAttribute(hConsole, 9);
+                SetConsoleTextAttribute(hConsole, 8);
                 printf("%d", aux->key); fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
                 printf("->LC:");    fflush(stdout);
             }
             else if (aux->color == red){
                 SetConsoleTextAttribute(hConsole, 12);
                 printf("%d", aux->key);  fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
                 printf("->LC:");    fflush(stdout);
             }
             if (aux->LC->color == black){
-                SetConsoleTextAttribute(hConsole, 9);
+                SetConsoleTextAttribute(hConsole, 8);
                 printf("%d\n",  aux->LC->key);  fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
             }
             else if (aux->LC->color == red){
                 SetConsoleTextAttribute(hConsole, 12);
                 printf("%d\n", aux->LC->key);   fflush(stdout);
-                SetConsoleTextAttribute(hConsole, 15);
             }
+            SetConsoleTextAttribute(hConsole, 7);
             tree_print(aux->LC,nill);
         }
     }
