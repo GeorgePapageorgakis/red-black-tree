@@ -198,8 +198,9 @@ void RB_transplant(struct node *aux, struct node *auxchild){
         root = auxchild;
     else if (aux == aux->P->LC)     //if child is a LC
         aux->P->LC = auxchild;      //connect grandparent's->LC with child
-    else aux->P->RC = auxchild;     //if child is RC connect grandparent's->RC with child
-        auxchild->P = aux->P;       //connect child to point to parent
+    else 
+    	aux->P->RC = auxchild;     //if child is RC connect grandparent's->RC with child
+    auxchild->P = aux->P;	   //connect child to point to parent
 }
 
 
@@ -230,7 +231,7 @@ void RB_delete_fix(struct node *x, struct node *w){
             //case 2: x's sibling w is black, and both of w's children are black to 
             //compensate for removing 1 black we add extra black to x.p which and
             //we do so by repeating (while loop) with x.p as new node x was red or black
-			//we remove 1 black color from x and w
+	    //we remove 1 black color from x and w
             else if (w->LC->color == black && w->RC->color == black){	
                 w->color = red;
                 x = x->P;
